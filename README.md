@@ -333,6 +333,34 @@ npm install
 
 ---
 
+# Deployment
+
+From the backend directory, launch a new Fly.io app with the following command:
+
+```bash
+flyctl launch
+```
+
+Modify the generated fly.toml file to include an necessary environment variables, specifically the PORT:
+
+```toml
+[env]
+  PORT = "3000"
+```
+
+To enbaled the deployment step of the GitHub Actions pipeline: 
+
+1. Go to the Fly.io website
+2. Navigate to Account >> Access Tokens >> Create Token
+3. Assign the new token to the corresponding app.
+4. Copy the genereated token value
+5. Go to the project's GitHub repository
+6. Navigate to Settings >> Secrets >> Actions
+7. Create a New Repository Secret called 'FLY_API_TOKEN'
+8. Paste the token value copied from Fly.io into the repository secret
+
+---
+
 # Customizing the Template
 
 This template is designed to be easily customizable. You can add more frontend and backend features by editing the respective code in the frontend and backend directories. Additionally, you can modify the CI/CD pipeline in .github/workflows/pipeline.yml to suit your project's needs.
